@@ -60,6 +60,11 @@ public class EmployeeMVC {
 
     }
 
+    @GetMapping("/showLoginPage")
+    public String loginForm(){
+        return "employee/employee-login";
+    }
+
      
     
 }
