@@ -30,8 +30,11 @@ public class EmployeeSecurity {
                  .formLogin(form -> 
                             form 
                                 .loginPage("/employees/showLoginPage")
-                                .loginProcessingUrl("/employees/authunticateTheUser")
+                                .loginProcessingUrl("/employees/list")
                                 .permitAll()
+                )
+                 .exceptionHandling(configurer ->
+                  configurer.accessDeniedPage("/accessDenied")     
                 );
 
         // use HTTP Basic authentication

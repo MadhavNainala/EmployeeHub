@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.RESTAPI.Entity.Employee;
 import com.example.RESTAPI.Service.EmployeeService;
@@ -35,8 +36,6 @@ public class EmployeeMVC {
     public String showEmployeeForm(Model theModel){
         theModel.addAttribute("employee", new Employee());
         return "employee/employee-form";
-
-
     }
 
     @GetMapping("/updateForm")
@@ -65,6 +64,9 @@ public class EmployeeMVC {
         return "employee/employee-login";
     }
 
-     
-    
+    @GetMapping("/accessDenied")
+    public String accessDenied(){
+        return "employee/employee-deny";
+    }
+ 
 }
