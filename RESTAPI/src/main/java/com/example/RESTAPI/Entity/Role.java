@@ -1,16 +1,24 @@
 package com.example.RESTAPI.Entity;
 
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import java.util.Collection;
+
 
 @Entity
 @Table(name = "role")
 public class Role {
-   
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -19,11 +27,17 @@ public class Role {
     @Column(name = "name")
     private String name;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Collection<Role> roles;
+
     public Role() {
     }
 
     public Role(String name) {
-    this.name = name;
+        this.name = name;
     }
 
     public Long getId() {
@@ -44,8 +58,6 @@ public class Role {
 
     @Override
     public String toString() {
-        return "Role [id=" + id + ", name=" + name + "]";
+        return "Role{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
-
-    
-}    
+}
