@@ -6,6 +6,7 @@ import com.example.RESTAPI.Entity.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -31,6 +32,15 @@ public class UserDaoImpl implements UserDao {
             theUser = null;
         }
         return theUser;
+    }   
+
+    @Override
+	@Transactional
+	public void save(User theUser) {
+
+		// create the user ... finally LOL
+		entityManager.merge(theUser);
+
     }   
 }
  

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Confirmation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 400px;
+            text-align: left;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>User registered successfully!</h2>
+    <!-- Display user information -->
+    <ul>
+        <li th:text="'User name: ' + ${webUser.userName}"></li>
+        <li th:text="'First name: ' + ${webUser.firstName}"></li>
+        <li th:text="'Last name: ' + ${webUser.lastName}"></li>
+        <li th:text="'Email: ' + ${webUser.email}"></li>
+    </ul>
+    <hr>
+    <!-- Provide a link to login with the newly registered user -->
+    <a th:href="@{/employees/showMyLoginPage}">Login with new username</a>
+    <!-- Assuming the link leads to the login page, adjust the href attribute accordingly -->
+    <!-- You can also provide a different link based on your application's flow -->
+</body>
+</html>
