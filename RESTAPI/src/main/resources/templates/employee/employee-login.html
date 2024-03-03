@@ -57,13 +57,13 @@
                         <h2>Login</h2>
                     </div>
                     <div class="card-body">
-                        <form action="#" th:action="@{/employees/authenticateTheUser}" method="post">
+                        <form action="#" th:action="@{/authenticateTheUser}" method="post">
                             <div th:if="${param.error}" class="error-message">
                                 Please enter correct credentials
                             </div>
-                            <!-- <div th:if="${param.logout}" class="error-message">
+                            <div th:if="${param.logout}" class="error-message">
                                 you are logged out
-                            </div> -->
+                            </div>
                             <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" />

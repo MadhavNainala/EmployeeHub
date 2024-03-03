@@ -37,7 +37,7 @@ public class EmployeeSecurity {
 
         http.authorizeHttpRequests(configurer ->
                         configurer
-                                .requestMatchers("/").hasRole("EMPLOYEE")
+                                .requestMatchers("/employees/list").hasRole("EMPLOYEE")
                                 .requestMatchers("/leaders/**").hasRole("MANAGER")
                                 .requestMatchers("/systems/**").hasRole("ADMIN")
                                 .requestMatchers("/register/**").permitAll()
@@ -46,7 +46,7 @@ public class EmployeeSecurity {
                 .formLogin(form ->
                         form
                                 .loginPage("/employees/showLoginPage")
-                                .loginProcessingUrl("/employees/authenticateTheUser")
+                                .loginProcessingUrl("/authenticateTheUser")
                                 .successHandler(customAuthenticationSuccessHandler)
                                 .permitAll()
                 )
